@@ -19,23 +19,37 @@ public class ScoreCalculateurTest {
     }
 
     @Test
-    public void calculeScoreAllRepOk() {
+    public void testCalculeScoreAllRepOk() {
         ArrayList repEtu = new ArrayList<Integer>(Arrays.asList(2, 3, 5));
         float score = sc.calculeScore(repEtu,questionAChoixMultiple);
         assertEquals(100f, score, 0.01f);
     }
 
     @Test
-    public void calculeScoreSomeRepOk() {
+    public void testCalculeScoreSomeRepOk() {
         ArrayList repEtu = new ArrayList<Integer>(Arrays.asList(2, 3));
         float score = sc.calculeScore(repEtu, questionAChoixMultiple);
         assertEquals(2*100/3f, score, 0.01f);
     }
 
     @Test
-    public void calculeScoreNoRepOk() {
+    public void testCalculeScoreNoRepOk() {
         ArrayList repEtu = new ArrayList<Integer>(Arrays.asList(1,4));
         float score = sc.calculeScore(repEtu, questionAChoixMultiple);
         assertEquals(0f, score, 0.01f);
+    }
+
+    @Test
+    public void testCorrection1() {
+        ArrayList repEtu = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5));
+        float score = sc.calculeScore(repEtu, questionAChoixMultiple);
+        assertEquals(0f, score, 0.01f);
+    }
+
+    @Test
+    public void testCorrection2() {
+        ArrayList repEtu = new ArrayList<Integer>(Arrays.asList(1,2,3));
+        float score = sc.calculeScore(repEtu, questionAChoixMultiple);
+        assertEquals(16.66f, score, 0.01f);
     }
 }
